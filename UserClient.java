@@ -12,7 +12,7 @@ class UserClient
 		{
 			for(int j = 0; j < boardSize; j++)
 			{
-				board[i][j] = "┼";
+				board[i][j] = "┼ ";
 			}
 		}
 	}
@@ -42,7 +42,7 @@ class UserClient
 		{
 			return 2;
 		}
-		while((keyIn == true) && (board[siteY][siteX] != "┼"))
+		while((keyIn == true) && (board[siteY][siteX] != "┼ "))
 		{
 			return 2;
 		}
@@ -202,15 +202,16 @@ class UserClient
 						if(gb.printBoard(siteX, siteY, true, false) == 1)//print panal
 						{
 							System.out.println("Your win!");
-							out.writeInt(siteX * (boardSize-1) + siteY + 1 + ((boardSize-1) * (boardSize-1)));
+							out.writeInt(siteX * 100 + siteY + 10000);
 							break;
 						}
-						out.writeInt(siteX * (boardSize-1) + siteY + 1);//send massage
+						//out.writeInt(siteX * (boardSize-1) + siteY + 1);//send massage
+						out.writeInt(siteX * 100 + siteY);//send massage
 						System.out.println("Waiting...");
 						siteXY = new Integer(in.readInt());//get massage
-						siteXY--;
-						System.out.println("Enemy's site(x,y) : (" + (siteXY / (boardSize-1)) + "," +  (siteXY % (boardSize-1)) + ")!");
-						if(gb.printBoard((siteXY / (boardSize-1)), (siteXY % (boardSize-1)), false, false) == 1)
+					
+						System.out.println("Enemy's site(x,y) : (" + (siteXY / 100) + "," +  (siteXY % 100) + ")!");
+						if(gb.printBoard((siteXY / 100), (siteXY % 100), false, false) == 1)
 						{
 							System.out.println("Your lose!");
 							break;
@@ -223,9 +224,9 @@ class UserClient
 					{
 						System.out.println("Waiting...");
 						siteXY = new Integer(in.readInt());
-						siteXY--;
-						System.out.println("Enemy's site(x,y) : (" + (siteXY / (boardSize-1)) + "," +  (siteXY % (boardSize-1)) + ")!");
-						if(gb.printBoard((siteXY / (boardSize-1)), (siteXY % (boardSize-1)), true, false) == 1)
+						
+						System.out.println("Enemy's site(x,y) : (" + (siteXY / 100) + "," +  (siteXY % 100) + ")!");
+						if(gb.printBoard((siteXY / 100), (siteXY % 100), true, false) == 1)
 						{
 							System.out.println("Your lose!");
 							break;
@@ -243,12 +244,19 @@ class UserClient
 						if(gb.printBoard(siteX, siteY, false, false) == 1)//print panal
 						{
 							System.out.println("Your win!");
-							out.writeInt(siteX * (boardSize-1) + siteY + 1 + ((boardSize-1)*(boardSize-1)));
+							out.writeInt(siteX * 100 + siteY + 10000);
+							
 							break;
 						}
-						out.writeInt(siteX * (boardSize-1) + siteY + 1);//send massage
+						//out.writeInt(siteX * (boardSize-1) + siteY + 1);//send massage
+						out.writeInt(siteX * 100 + siteY);//send massage
 					}
 				}
+				try
+				{
+					newThreadPlayer1.sleep(5000);
+				}catch(Exception e){}
+				
 				out.close();
 				in.close();
 				client.close();

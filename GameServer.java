@@ -32,9 +32,9 @@ class ThreadBySubclass extends Thread
 				while(true)
 				{
 					site[userNumber] = new Integer(in.readInt());
-					if(site[userNumber] > 196)
+					if(site[userNumber] > 10000)
 					{
-						site[userNumber] -= 196;
+						site[userNumber] -= 10000;
 						endOfGame = true;
 					}
 					System.out.println("Client" + userNumber + " : " + site[userNumber]);
@@ -59,9 +59,9 @@ class ThreadBySubclass extends Thread
 					site[userNumber - 1] = 0;
 					if(endOfGame) break;
 					site[userNumber] = new Integer(in.readInt());
-					if(site[userNumber] > 196)
+					if(site[userNumber] > 10000)
 					{
-						site[userNumber] -= 196;
+						site[userNumber] -= 10000;
 						endOfGame = true;
 					}
 					System.out.println("Client" + userNumber + " : " + site[userNumber]);
