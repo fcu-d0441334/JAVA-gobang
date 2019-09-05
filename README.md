@@ -1,6 +1,6 @@
 # gobang-server-client-
   
-將Multithread的概念運用在簡易的五子棋遊戲上  
+將Multithread的概念運用在簡易的多人連線對戰五子棋遊戲上  
   
 Step to open this file  
 OPEN cmd(WIN+R "cmd")    
